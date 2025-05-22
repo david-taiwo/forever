@@ -12,7 +12,7 @@ import Orders from "./pages/Orders";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import SearchBar from "./components/searchBar";
+import SearchBar from "./components/SearchBar";
 
 const App = () => {
   return (
