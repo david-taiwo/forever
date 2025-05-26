@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "../components/Title";
 import { assets } from "../assets/frontend_assets/assets";
+import NewsletterBox from "../components/NewsletterBox";
 
 const Contact = () => {
   return (
@@ -18,10 +19,24 @@ const Contact = () => {
         <div className="flex flex-col justify-center items-start gap-6">
           <p className="font-semibold text-xl text-gray-600">Our Store</p>
           <p className="text-gray-500">
-            54709 Oando Station <br /> Suits 350, Washinton
+            54709 Oando Station <br /> Suits 350, Lagere,
           </p>
+          <p className="text-gray-500">
+            Tel: +234 - 90 - 136 - 790 - 54 <br /> Email: admin@oreva.com
+          </p>
+          <p className="font-semibold text-xl text-gray-600">
+            Careers at Oreva
+          </p>
+          <p className="text-gray-500">
+            Learn more about teams and job openings.
+          </p>
+          <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500">
+            Explore Jobs
+          </button>
         </div>
       </div>
+
+      <NewsletterBox />
     </div>
   );
 };
