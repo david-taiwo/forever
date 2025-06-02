@@ -3,7 +3,7 @@ import { assets } from "../assets/assets";
 import axios from "axios";
 import { backendUrl } from "../App";
 
-const Add = () => {
+const Add = ({ token }) => {
   const [image1, setImage1] = useState(false);
   const [image2, setImage2] = useState(false);
   const [image3, setImage3] = useState(false);
@@ -37,7 +37,8 @@ const Add = () => {
 
       const response = await axios.post(
         backendUrl + "/api/product/add",
-        formData
+        formData,
+        { headers: { token } }
       );
       console.log(response.data);
     } catch (error) {
