@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { backendUrl } from "../App";
+import { toast } from "react-toastify";
 
 const Add = ({ token }) => {
   const [image1, setImage1] = useState(false);
@@ -13,7 +14,7 @@ const Add = ({ token }) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("Men");
-  const [subcategory, setSubcategory] = useState("Topwear");
+  const [subCategory, setSubCategory] = useState("Topwear");
   const [bestseller, setBestseller] = useState(false);
   const [sizes, setSizes] = useState([]);
 
@@ -26,7 +27,7 @@ const Add = ({ token }) => {
       formData.append("description", description);
       formData.append("price", price);
       formData.append("category", category);
-      formData.append("subcategory", subcategory);
+      formData.append("subCategory", subCategory);
       formData.append("bestseller", bestseller);
       formData.append("sizes", JSON.stringify(sizes));
 
@@ -40,9 +41,21 @@ const Add = ({ token }) => {
         formData,
         { headers: { token } }
       );
-      console.log(response.data);
+      if (response.data.success) {
+        toast.success(response.data.message);
+        setName("");
+        setDescription("");
+        setImage1(false);
+        setImage2(false);
+        setImage3(false);
+        setImage4(false);
+        setPrice("");
+      } else {
+        toast.error(response.data.message);
+      }
     } catch (error) {
       console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -149,7 +162,7 @@ const Add = ({ token }) => {
         <div>
           <p className="mb-2">Sub Category</p>
           <select
-            onChange={(e) => setSubcategory(e.target.value)}
+            onChange={(e) => setSubCategory(e.target.value)}
             className="w-full px-3 py-2"
           >
             <option value="Topwear">Topwear</option>
